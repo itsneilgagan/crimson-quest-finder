@@ -9,9 +9,11 @@ import { Badge } from '@/components/ui/badge';
 import { toast } from '@/hooks/use-toast';
 import { Plus, Edit3, User } from 'lucide-react';
 import heroImage from '@/assets/sarvam-hero.jpg';
+import { AddServiceModal } from '@/components/AddServiceModal';
 
 const Auth = () => {
   const [showForm, setShowForm] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -219,15 +221,12 @@ const Auth = () => {
           <div className="flex justify-center gap-8">
             <div 
               className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform"
-              onClick={() => {
-                setIsLogin(false);
-                setShowForm(true);
-              }}
+              onClick={() => setShowAddModal(true)}
             >
               <div className="w-20 h-20 bg-muted rounded-2xl flex items-center justify-center mb-3 shadow-lg border border-border">
                 <Plus className="w-8 h-8 text-muted-foreground" />
               </div>
-              <span className="text-muted-foreground font-medium">Add</span>
+              <span className="text-muted-foreground font-medium">Add Service</span>
             </div>
             
             <div className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform">
@@ -239,6 +238,17 @@ const Auth = () => {
           </div>
         </div>
       </div>
+
+      <AddServiceModal 
+        open={showAddModal}
+        onOpenChange={setShowAddModal}
+        onServiceAdded={() => {
+          toast({
+            title: "Success!",
+            description: "Your service has been added successfully.",
+          });
+        }}
+      />
     </div>
   );
 };
