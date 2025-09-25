@@ -100,44 +100,6 @@ export type Database = {
           },
         ]
       }
-      notifications: {
-        Row: {
-          body: string | null
-          created_at: string | null
-          metadata: Json | null
-          notification_id: string
-          profile_id: string
-          seen: boolean | null
-          title: string | null
-        }
-        Insert: {
-          body?: string | null
-          created_at?: string | null
-          metadata?: Json | null
-          notification_id?: string
-          profile_id: string
-          seen?: boolean | null
-          title?: string | null
-        }
-        Update: {
-          body?: string | null
-          created_at?: string | null
-          metadata?: Json | null
-          notification_id?: string
-          profile_id?: string
-          seen?: boolean | null
-          title?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "notifications_profile_id_fkey"
-            columns: ["profile_id"]
-            isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       profiles: {
         Row: {
           avatar_url: string | null
